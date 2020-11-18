@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/currency_nav_graph"
+    app:startDestination="@id/listCurrenciesFragment2">
+
+    <fragment
+        android:id="@+id/listCurrenciesFragment2"
+        android:name="com.ktaha.currencyconverter.ui.fragments.ListCurrenciesFragment"
+        android:label="ListCurrenciesFragment" />
+    <fragment
+        android:id="@+id/convertFragment"
+        android:name="com.ktaha.currencyconverter.ui.fragments.ConvertFragment"
+        android:label="ConvertFragment" />
+</navigation>

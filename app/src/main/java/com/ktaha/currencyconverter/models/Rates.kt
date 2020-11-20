@@ -34,4 +34,42 @@ data class Rates(
     val TRY: Double,
     val USD: Double,
     val ZAR: Double
-)
+) {
+    fun getCurrenciesMap(): Map<String, Double> {
+        return mapOf<String, Double>(
+                "AUD" to AUD,
+                "BGN" to BGN,
+                "BRL" to BRL,
+                "CAD" to CAD,
+                "CHF" to CHF,
+                "CNY" to CNY,
+                "CZK" to CZK,
+                "DKK" to DKK,
+                "EUR" to EUR,
+                "GBP" to GBP,
+                "HKD" to HKD,
+                "HRK" to HRK,
+                "HUF" to HUF,
+                "IDR" to IDR,
+                "ILS" to ILS,
+                "INR" to INR,
+                "ISK" to ISK,
+                "JPY" to JPY,
+                "KRW" to KRW,
+                "MXN" to MXN,
+                "MYR" to MYR,
+                "NOK" to NOK,
+                "NZD" to NZD,
+                "PHP" to PHP,
+                "PLN" to PLN,
+                "RON" to RON,
+                "RUB" to RUB,
+                "SEK" to SEK,
+                "SGD" to SGD,
+                "THB" to THB,
+                "TRY" to TRY,
+                "USD" to USD,
+                "ZAR" to ZAR
+        )
+    }
+}

@@ -10,6 +10,8 @@ import com.ktaha.currencyconverter.repository.CurrencyRepository
 import com.ktaha.currencyconverter.util.Resource
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class CurrencyViewModel(
         app: Application,
@@ -51,14 +53,20 @@ class CurrencyViewModel(
                     } else {
                         return when {
                             sourceCurrency == "USD" -> {
-                                amount * (ratesMap[targetCurrency] ?: 1.0)
+                                val doubleValue = amount * (ratesMap[targetCurrency] ?: 1.0)
+                                val decimalValue = BigDecimal(doubleValue).setScale(4, RoundingMode.HALF_EVEN)
+                                decimalValue.toDouble()
                             }
                             targetCurrency == "USD" -> {
-                                amount / (ratesMap[sourceCurrency] ?: 1.0)
+                                val doubleValue = amount / (ratesMap[sourceCurrency] ?: 1.0)
+                                val decimalValue = BigDecimal(doubleValue).setScale(4, RoundingMode.HALF_EVEN)
+                                decimalValue.toDouble()
                             }
                             else -> {
                                 val valueInUSD = amount / (ratesMap[sourceCurrency] ?: 1.0)
-                                valueInUSD * (ratesMap[targetCurrency] ?: 1.0)
+                                val doubleValue = valueInUSD * (ratesMap[targetCurrency] ?: 1.0)
+                                val decimalValue = BigDecimal(doubleValue).setScale(4, RoundingMode.HALF_EVEN)
+                                decimalValue.toDouble()
                             }
                         }
                     }

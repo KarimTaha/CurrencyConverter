@@ -1,17 +1,21 @@
 package com.ktaha.currencyconverter.ui.fragments
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import com.ktaha.currencyconverter.R
 import com.ktaha.currencyconverter.ui.CurrencyViewModel
 import com.ktaha.currencyconverter.ui.MainActivity
 import kotlinx.android.synthetic.main.fragment_convert.*
 
+
 class ConvertFragment : Fragment(R.layout.fragment_convert) {
 
-    lateinit var viewModel: CurrencyViewModel
+    private lateinit var viewModel: CurrencyViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,5 +46,21 @@ class ConvertFragment : Fragment(R.layout.fragment_convert) {
             }
             false
         }
+
+        etSourceAmount.setOnFocusChangeListener { _, _ ->
+            hideKeyboard()
+        }
+        etTargetAmount.setOnFocusChangeListener { _, _ ->
+            hideKeyboard()
+        }
+    }
+
+    private fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

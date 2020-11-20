@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ktaha.currencyconverter.R
 import com.ktaha.currencyconverter.models.Currency
+import com.ktaha.currencyconverter.models.Rates
 import kotlinx.android.synthetic.main.item_currency.view.*
 
 class CurrenciesAdapter: RecyclerView.Adapter<CurrenciesAdapter.CurrencyViewHolder>() {
@@ -25,6 +26,20 @@ class CurrenciesAdapter: RecyclerView.Adapter<CurrenciesAdapter.CurrencyViewHold
     }
 
     val differ = AsyncListDiffer(this, differCallback)
+
+    fun submitListToDiffer(rates: Rates) {
+        differ.submitList(getCurrenciesList(rates))
+    }
+
+    private fun getCurrenciesList(rates:Rates):List<Currency> {
+        val currenciesMap = rates.getCurrenciesMap()
+        var resultList = mutableListOf<Currency>()
+        for (currencyCode in currenciesMap) {
+            resultList.add(Currency(currencyCode.key, currencyCode.value))
+        }
+
+        return resultList
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         return CurrencyViewHolder(

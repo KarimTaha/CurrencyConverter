@@ -29,7 +29,7 @@ class ListCurrenciesFragment : Fragment(R.layout.fragment_list_currencies){
             when(response) {
                 is Resource.Success -> {
                     response.data?.let { currenciesResponse->
-                        currenciesAdapter.differ.submitList(getCurrenciesList(currenciesResponse.rates))
+                        currenciesAdapter.submitListToDiffer(currenciesResponse.rates)
                     }
                 }
                 is Resource.Error -> {
@@ -50,16 +50,6 @@ class ListCurrenciesFragment : Fragment(R.layout.fragment_list_currencies){
             adapter = currenciesAdapter
             layoutManager = LinearLayoutManager(activity)
         }
-    }
-
-    private fun getCurrenciesList(rates:Rates):List<Currency> {
-        val currenciesMap = rates.getCurrenciesMap()
-        var resultList = mutableListOf<Currency>()
-        for (currencyCode in currenciesMap) {
-            resultList.add(Currency(currencyCode.key, currencyCode.value))
-        }
-
-        return resultList
     }
 }
 

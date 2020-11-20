@@ -33,7 +33,7 @@ class CurrenciesAdapter: RecyclerView.Adapter<CurrenciesAdapter.CurrencyViewHold
 
     private fun getCurrenciesList(rates:Rates):List<Currency> {
         val currenciesMap = rates.getCurrenciesMap()
-        var resultList = mutableListOf<Currency>()
+        val resultList = mutableListOf<Currency>()
         for (currencyCode in currenciesMap) {
             resultList.add(Currency(currencyCode.key, currencyCode.value))
         }

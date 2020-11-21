@@ -18,7 +18,7 @@ class CurrencyViewModel(
         private val currencyRepository: CurrencyRepository
 ): AndroidViewModel(app) {
     val currencies: MutableLiveData<Resource<CurrencyResponse>> = MutableLiveData()
-    val TAG = "CurrencyViewModel"
+    private val TAG = "CurrencyViewModel"
 
     init {
         getCurrencies()

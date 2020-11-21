@@ -18,18 +18,18 @@
         android:hint="Source Amount"
         android:gravity="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvSourceCurrency"
+        app:layout_constraintBottom_toTopOf="@+id/btnSourceCurrency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvSourceCurrency"
+    <Button
+        android:id="@+id/btnSourceCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="USD"
         android:textSize="40sp"
+        android:text="USD"
         app:layout_constraintBottom_toTopOf="@+id/etTargetAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -55,14 +55,14 @@
         android:hint="Target Amount"
         android:gravity="center"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/tvTargetCurrency"
+        app:layout_constraintBottom_toTopOf="@+id/btnTargetCurrency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSourceCurrency" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSourceCurrency" />
 
-    <TextView
-        android:id="@+id/tvTargetCurrency"
+    <Button
+        android:id="@+id/btnTargetCurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="EUR"
